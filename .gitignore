@@ -1,0 +1,10 @@
+.DS_Store
+.tmp
+.git
+.idea
+node_modules
+npm-debug*
+.settings
+*.log
+build/
+api-docs.json
