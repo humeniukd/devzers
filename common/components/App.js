@@ -36,9 +36,9 @@ class App extends React.Component {
               <Search styles={styles} {...this.props}/>
             </Drawer>
             <Switch>
-              <Route path={`/`} render={(ownProps) => <BarChart styles={styles} {...this.props} {...ownProps}/>}/>
-              {/*<Route path={`/:id(${IDREGEX})`} render={(ownProps) => <Car styles={styles} {...this.props} {...ownProps}/>}/>*/}
-              {/*<Route path="/:make?/:model?" render={(ownProps) => <Cars styles={styles} {...this.props} {...ownProps}/>}/>*/}
+              {/*<Route path={`/`} render={(ownProps) => <BarChart styles={styles} {...this.props} {...ownProps}/>}/>*/}
+              <Route path={`/:id(${IDREGEX})`} render={(ownProps) => <Car styles={styles} {...this.props} {...ownProps}/>}/>
+              <Route path="/:make?/:model?" render={(ownProps) => <Cars styles={styles} {...this.props} {...ownProps}/>}/>
             </Switch>
           </div>
         </div>

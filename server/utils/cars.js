@@ -5,7 +5,7 @@ import fetch from 'isomorphic-fetch'
 
 const data = {}
 
-const baseUrl = 'https://jsonplaceholder.typicode.com/posts'
+const baseUrl = 'https://jsonplaceholder.typicode.com/users'
 
 const maxMileage = 300000
 const maxPrice = 30000

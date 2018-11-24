@@ -52,5 +52,32 @@ export default (width) => ({
   wrapper: {
     display: 'flex',
     flexWrap: 'wrap'
+  },
+  green: {
+    color: 'green'
+  },
+  red: {
+    color: 'red'
+  },
+  greenCircle: {
+    background: 'green',
+    display: 'inline-block',
+    width: '12px',
+    height: '12px',
+    'border-radius': '10px',
+    'margin-right': '10px'
+
+  },
+  redCircle: {
+    background: 'red',
+    display: 'inline-block',
+    width: '12px',
+    height: '12px',
+    'border-radius': '10px',
+    'margin-right': '10px'
+  },
+  link: {
+    color: 'black',
+    'text-decoration': 'none'
   }
 })
