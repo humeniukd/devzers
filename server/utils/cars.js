@@ -34,6 +34,12 @@ while (i++ < itemsCount) {
   }
 }
 
+const getRandomInt = (min, max) => {
+  min = Math.ceil(min)
+  max = Math.floor(max)
+  return Math.floor(Math.random() * (max - min + 1)) + min
+}
+
 export const paramsToPath = (params) => {
   const { model, make } = params
   return [model, make].filter(Boolean).join('/')
@@ -48,6 +54,10 @@ export const list = async (criteria, options = {}) => {
 
   const res = await fetch(url)
   const data = await res.json()
+
+  data.map(item => {
+    item.status = getRandomInt(-3, 3)
+  })
 
   return data
 }

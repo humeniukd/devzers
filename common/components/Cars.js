@@ -29,8 +29,6 @@ const Cars = ({items, next, prev, onPagination, handleSearch, params, query, sty
   statuses.set(2, 'VERY GOOD')
   statuses.set(3, 'EXCELLENT')
 
-  const status = 2
-
   return (
   <div style={styles.wrapper}>
     <div>
@@ -44,9 +42,9 @@ const Cars = ({items, next, prev, onPagination, handleSearch, params, query, sty
         {items.map(item =>
           <ListItem key={item.id}>
             <Link to={`/${item.id}`} style={styles.link}>
-              <div style={status >= 0 ? styles.greenCircle : styles.redCircle}></div>
+              <div style={item.status >= 0 ? styles.greenCircle : styles.redCircle}></div>
               {item.name + ' '}
-              <span style={status >= 0 ? styles.green : styles.red}>{status + ' (' + statuses.get(status) + ')'}</span>
+              <span style={item.status >= 0 ? styles.green : styles.red}>{item.status + ' (' + statuses.get(item.status) + ')'}</span>
             </Link>
           </ListItem>
         )}
