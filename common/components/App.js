@@ -9,7 +9,6 @@ import getStyles from '../../client/css'
 import { Cars, Car, BarChart } from '../containers'
 import Search from './Search'
 import { IDREGEX }  from '../../server/router/routes'
-import ActionEuroSymbol from 'material-ui/svg-icons/action/euro-symbol'
 
 import injectTapEventPlugin from 'react-tap-event-plugin'
 injectTapEventPlugin()
@@ -29,7 +28,7 @@ class App extends React.Component {
     return (
       <MuiThemeProvider muiTheme={getMuiTheme({ userAgent: navigator.userAgent })}>
         <div>
-          <AppBar style={styles.appBar} onLeftIconButtonTouchTap={this.handleToggle} title="FinPro"></AppBar>
+          <AppBar style={styles.appBar} onLeftIconButtonTouchTap={this.handleToggle} title="FinBro"></AppBar>
           <div style={styles.root}>
             <Drawer open={this.state.isOpen} containerStyle={styles.drawer} docked={false} onRequestChange={(isOpen) => this.setState({isOpen})}>
               <h1 style={styles.drawer}>Select</h1>
