@@ -16,17 +16,21 @@ const mapStateToProps = (state, ownProps) => {
     path: '/:make?/:model?'
   })
 
-  const handleSearch = ({
-    model = params.model,
-    make = params.make,
-    price = query.price,
-    mileage = query.mileage,
-    start = query.start,
-    end = query.end
-  }) => {
-    const q = { ...query, price, mileage, start, end }
+  const handleSearch = (temp) => {
+    const query = parse(history.location.search.slice(1))
+    const
+      model = temp.model || params.model,
+      make = temp.make || params.make,
+      price = temp.price || query.price,
+      mileage = temp.mileage || query.mileage,
+      startdate = temp.startdate || query.startdate,
+      enddate = temp.enddate || query.enddate,
+      percentage = temp.percentage || query.percentage,
+      threshold = temp.threshold || query.threshold
+    const q = { ...query, price, mileage, startdate, enddate, percentage, threshold }
     const keys = Object.keys(q)
     keys.forEach(key => !q[key] && delete q[key])
+    delete q.start
 
     const pathname = '/' + [make, model].filter(Boolean).join('/')
     const url = format({ pathname, query: q })

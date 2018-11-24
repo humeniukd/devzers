@@ -1,6 +1,8 @@
 import React, {Component} from 'react'
 import Input from './Input'
 import DatePicker from 'material-ui/DatePicker'
+import SelectField from 'material-ui/SelectField'
+import MenuItem from 'material-ui/MenuItem'
 import { List, ListItem } from 'material-ui/List'
 import { makes, models } from '../index'
 
@@ -9,8 +11,10 @@ export default class Search extends Component {
     super(props)
     this.state = {
       price: '',
-      minDate: null,
-      maxDate: null
+      minDate: props.query.minDate || null,
+      maxDate: props.query.maxDate || null,
+      percentage: parseInt(props.query.percentage) || 20,
+      threshold: props.query.threshold || '1week'
     }
 
     this.handleSearch = props.handleSearch
@@ -28,20 +32,25 @@ export default class Search extends Component {
     <ListItem key={model} type="model" onClick={this.handleClick({make, model})}>{model}</ListItem>
   )
 
-  inputHandler = e => {
+  inputHandler = (e) => {
     const {name, value} = e.target
     this.handleSearch({[name]: value})
   }
 
+  selectHandler = type => (e, index, value) => {
+    this.setState({
+      [type]: value
+    });
+    this.handleSearch({[type]: value})
+  }
+
   datePickerHandler = type => (e, date) => {
-    if (type === 'start') {
+    if (type === 'startdate') {
       this.setState({
-        ...this.state,
         minDate: date,
       });
-    } else if (type === 'end') {
+    } else if (type === 'enddate') {
       this.setState({
-        ...this.state,
         maxDate: date,
       });
     }
@@ -62,12 +71,28 @@ export default class Search extends Component {
         </List>
         <div>
           <div style={this.styles.row}>
-            <DatePicker hintText="Start date" container="inline" name="start" style={this.styles.input}
-                        minDate={this.state.minDate} maxDate={this.state.maxDate} onChange={this.datePickerHandler('start')}/>
+            <SelectField style={this.styles.input}
+              floatingLabelText="percentage"
+              value={this.state.percentage}
+              onChange={this.selectHandler('percentage')}
+            >
+              <MenuItem value={20} primaryText="20%" />
+              <MenuItem value={40} primaryText="40%" />
+              <MenuItem value={60} primaryText="60%" />
+              <MenuItem value={80} primaryText="80%" />
+            </SelectField>
           </div>
           <div style={this.styles.row}>
-            <DatePicker hintText="End date" container="inline" name="end" style={this.styles.input}
-                        minDate={this.state.minDate} maxDate={this.state.maxDate} onChange={this.datePickerHandler('end')}/>
+            <SelectField style={this.styles.input}
+              floatingLabelText="threshold"
+              value={this.state.threshold}
+              onChange={this.selectHandler('threshold')}
+            >
+              <MenuItem value={'1week'} primaryText="1 week" />
+              <MenuItem value={'2week'} primaryText="2 week" />
+              <MenuItem value={'1month'} primaryText="1 month" />
+              <MenuItem value={'2month'} primaryText="2 month" />
+            </SelectField>
           </div>
           <div style={this.styles.row}>
             <Input style={this.styles.input} type="number" hintText="price" name="price"
