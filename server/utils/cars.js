@@ -1,8 +1,11 @@
 import uuid from 'uuid'
 import { makes, models } from '../../common'
 import { NotFoundError } from './errors'
+import fetch from 'isomorphic-fetch'
 
 const data = {}
+
+const baseUrl = 'https://jsonplaceholder.typicode.com/posts'
 
 const maxMileage = 300000
 const maxPrice = 30000
@@ -37,27 +40,26 @@ export const paramsToPath = (params) => {
 }
 
 export const list = async (criteria, options = {}) => {
-  const items = Object.values(data)
   const { make, model, mileage, price } = criteria
   const { start = 0, limit = 10, sort = {price: 1} } = options
   const sortBy = Object.keys(sort)[0]
   const sortOrder = parseInt(sort[sortBy])
+  const url = `${baseUrl}?_page=start${start}&_limit=${limit}`
 
-  const conditions = [(item) => !item.reserved]
+  const res = await fetch(url)
+  const data = await res.json()
 
-  make && conditions.push((item) => item.make === make)
-  model && conditions.push((item) => item.model === model)
-  mileage && conditions.push((item) => item.mileage <= mileage)
-  price && conditions.push((item) => item.price <= price)
-
-  return items.filter(item => conditions.every(fn => fn(item)))
-    .sort((a, b) => sortOrder ? a[sortBy] - b[sortBy] : b[sortBy] - a[sortBy])
-    .slice(start, start + limit).reduce((res, item) => ({ ...res, [item.id]: item }), {})
+  return data
 }
 
 const notFound = () => { throw new NotFoundError() }
 
-export const get = async id => data[id] || notFound()
+export const get = async id => {
+  const res = await fetch(`${baseUrl}/${id}`)
+  const data = await res.json()
+
+  return data
+}
 
 export default {
   list,

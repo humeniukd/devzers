@@ -28,11 +28,10 @@ const Cars = ({items, next, prev, onPagination, handleSearch, params, query, sty
         {items.map((item) => (
           <GridTile
             key={item.id}
-            title={`${item.make} ${item.model}`}
-            subtitle={<span>{item.mileage} miles  - <b>{item.price}$</b></span>}
+            title={item.title}
+            subtitle={item.body}
             actionIcon={<Link to={`/${item.id}`}><IconButton><NavigationMoreHoriz color="white" /></IconButton></Link>}
           >
-            <img src={item.img} />
           </GridTile>
         ))}
       </GridList>

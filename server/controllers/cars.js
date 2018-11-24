@@ -32,12 +32,14 @@ const list = async (req) => {
   if (start >= limit) {
     prev = start > limit ? q({ ...query, start: start - limit }) : delete query.start && q(query)
   }
+  console.log('list')
   return { items, next, prev }
 }
 
 const get = async (req) => {
   const id = req.params.id
   const car = await cars.get(id)
+  console.log('get')
   return car
 }
 
