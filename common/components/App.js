@@ -28,7 +28,7 @@ class App extends React.Component {
     return (
       <MuiThemeProvider muiTheme={getMuiTheme({ userAgent: navigator.userAgent })}>
         <div>
-          <AppBar style={styles.appBar} onLeftIconButtonTouchTap={this.handleToggle} title="Cars App" />
+          <AppBar style={styles.appBar} onLeftIconButtonTouchTap={this.handleToggle} title="FinPro" />
           <div style={styles.root}>
             <Drawer open={this.state.isOpen} containerStyle={styles.drawer} docked={false} onRequestChange={(isOpen) => this.setState({isOpen})}>
               <h1 style={styles.drawer}>Select</h1>
