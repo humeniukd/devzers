@@ -1,10 +1,13 @@
 import {spacing, typography} from 'material-ui/styles'
 import { SMALL } from 'material-ui/utils/withWidth'
+import {deepPurpleA700} from 'material-ui/styles/colors'
+
 export default (width) => ({
   appBar: {
     position: 'fixed',
     left: 0,
-    top: 0
+    top: 0,
+    backgroundColor: deepPurpleA700
   },
   drawer: {
     cursor: 'pointer',
@@ -51,6 +54,7 @@ export default (width) => ({
   },
   wrapper: {
     display: 'flex',
+    flexDirection: 'column',
     flexWrap: 'wrap'
   },
   green: {
@@ -64,8 +68,8 @@ export default (width) => ({
     display: 'inline-block',
     width: '12px',
     height: '12px',
-    'border-radius': '10px',
-    'margin-right': '10px'
+    borderRadius: '10px',
+    marginRight: '10px'
 
   },
   redCircle: {
@@ -73,11 +77,11 @@ export default (width) => ({
     display: 'inline-block',
     width: '12px',
     height: '12px',
-    'border-radius': '10px',
-    'margin-right': '10px'
+    borderRadius: '10px',
+    marginRight: '10px'
   },
   link: {
     color: 'black',
-    'text-decoration': 'none'
+    textDecoration: 'none'
   }
 })

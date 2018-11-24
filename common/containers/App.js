@@ -19,8 +19,8 @@ const mapStateToProps = (state, ownProps) => {
   const handleSearch = (temp) => {
     const query = parse(history.location.search.slice(1))
     const
-      model = temp.model || params.model,
-      make = temp.make || params.make,
+      model = typeof temp.model !== 'undefined' ? temp.model : params.model,
+      make = typeof temp.make !== 'undefined' ? temp.make : params.make,
       price = temp.price || query.price,
       mileage = temp.mileage || query.mileage,
       startdate = temp.startdate || query.startdate,

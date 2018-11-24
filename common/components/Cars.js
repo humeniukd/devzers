@@ -33,10 +33,12 @@ const Cars = ({items, next, prev, onPagination, handleSearch, params, query, sty
 
   return (
   <div style={styles.wrapper}>
+    <div>
     {make && <Chip style={styles.chip} onRequestDelete={deleteChip('make')} backgroundColor={lightBlue600}>{make}</Chip>}
     {model && <Chip style={styles.chip} onRequestDelete={deleteChip('model')} backgroundColor={blue300}>{model}</Chip>}
     {price && <Chip style={styles.chip} onRequestDelete={deleteChip('price')} backgroundColor={amber300}>{price}$</Chip>}
     {mileage && <Chip style={styles.chip} onRequestDelete={deleteChip('mileage')} backgroundColor={lightGreen600}>{mileage}km</Chip>}
+    </div>
     <div style={styles.grid}>
       <List>
         {items.map(item =>
@@ -49,6 +51,8 @@ const Cars = ({items, next, prev, onPagination, handleSearch, params, query, sty
           </ListItem>
         )}
       </List>
+    </div>
+    <div>
       <FlatButton disabled={!prev} label="Prev" onClick={handlePaginationClick('prev')}/>
       <FlatButton disabled={!next} label="Next" onClick={handlePaginationClick('next')}/>
     </div>
