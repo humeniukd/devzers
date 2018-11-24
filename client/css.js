@@ -29,7 +29,8 @@ export default (width) => ({
   },
   input: {
     width: 140,
-    fontSize: 20
+    fontSize: 20,
+    overflow: 'hidden'
   },
   row: {
     display: 'flex',

@@ -20,12 +20,13 @@ const mapStateToProps = (state, ownProps) => {
     model = params.model,
     make = params.make,
     price = query.price,
-    mileage = query.mileage
+    mileage = query.mileage,
+    start = query.start,
+    end = query.end
   }) => {
-    const q = { ...query, price, mileage }
+    const q = { ...query, price, mileage, start, end }
     const keys = Object.keys(q)
     keys.forEach(key => !q[key] && delete q[key])
-    delete q.start
 
     const pathname = '/' + [make, model].filter(Boolean).join('/')
     const url = format({ pathname, query: q })
