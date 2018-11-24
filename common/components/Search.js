@@ -1,8 +1,6 @@
 import React from 'react'
 import Input from './Input'
 import { List, ListItem } from 'material-ui/List'
-import ActionEuroSymbol from 'material-ui/svg-icons/action/euro-symbol'
-import AvAvTimer from 'material-ui/svg-icons/av/av-timer'
 import { makes, models } from '../index'
 
 export default ({handleSearch, query, styles}) => {
@@ -36,13 +34,11 @@ export default ({handleSearch, query, styles}) => {
           <Input style={styles.input} type="number" hintText="price" name="price"
                  value={price} onChange={inputHandler}
           />
-          <ActionEuroSymbol/>
         </div>
         <div style={styles.row}>
           <Input style={styles.input} type="number" hintText="mileage" name="mileage"
             value={mileage} onChange={inputHandler}
           />
-          <AvAvTimer/>
         </div>
       </div>
     </div>

@@ -1,4 +1,5 @@
 import Car from './Car'
 import Cars from './Cars'
 import App from './App'
-export { Cars, App, Car }
+import BarChart from './BarChart'
+export { Cars, App, Car, BarChart }

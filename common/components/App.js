@@ -6,9 +6,10 @@ import AppBar from 'material-ui/AppBar'
 import withWidth from 'material-ui/utils/withWidth'
 import Drawer from 'material-ui/Drawer'
 import getStyles from '../../client/css'
-import { Cars, Car } from '../containers'
+import { Cars, Car, BarChart } from '../containers'
 import Search from './Search'
 import { IDREGEX }  from '../../server/router/routes'
+import ActionEuroSymbol from 'material-ui/svg-icons/action/euro-symbol'
 
 import injectTapEventPlugin from 'react-tap-event-plugin'
 injectTapEventPlugin()
@@ -28,15 +29,16 @@ class App extends React.Component {
     return (
       <MuiThemeProvider muiTheme={getMuiTheme({ userAgent: navigator.userAgent })}>
         <div>
-          <AppBar style={styles.appBar} onLeftIconButtonTouchTap={this.handleToggle} title="FinPro" />
+          <AppBar style={styles.appBar} onLeftIconButtonTouchTap={this.handleToggle} title="FinPro"><ActionEuroSymbol/></AppBar>
           <div style={styles.root}>
             <Drawer open={this.state.isOpen} containerStyle={styles.drawer} docked={false} onRequestChange={(isOpen) => this.setState({isOpen})}>
               <h1 style={styles.drawer}>Select</h1>
               <Search styles={styles} {...this.props}/>
             </Drawer>
             <Switch>
-              <Route path={`/:id(${IDREGEX})`} render={(ownProps) => <Car styles={styles} {...this.props} {...ownProps}/>}/>
-              <Route path="/:make?/:model?" render={(ownProps) => <Cars styles={styles} {...this.props} {...ownProps}/>}/>
+              <Route path={`/`} render={(ownProps) => <BarChart styles={styles} {...this.props} {...ownProps}/>}/>
+              {/*<Route path={`/:id(${IDREGEX})`} render={(ownProps) => <Car styles={styles} {...this.props} {...ownProps}/>}/>*/}
+              {/*<Route path="/:make?/:model?" render={(ownProps) => <Cars styles={styles} {...this.props} {...ownProps}/>}/>*/}
             </Switch>
           </div>
         </div>

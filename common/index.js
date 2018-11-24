@@ -1,6 +1,6 @@
 export const models = {
-  'Audi': ['A3', 'A4', 'A5'],
-  'BMW': ['Series3', 'X3', 'M3'],
-  'Opel': ['Corsa', 'Meriva', 'Insignia']
+  'A': ['A1', 'A2', 'A3'],
+  'B': ['B1', 'B2', 'B3'],
+  'C': ['C1', 'C2', 'C3']
 }
 export const makes = Object.keys(models)
