@@ -1,36 +1,8 @@
-import uuid from 'uuid'
-import { makes, models } from '../../common'
 import { NotFoundError } from './errors'
-import fetch from 'isomorphic-fetch'
 
 const data = {}
 
 const baseUrl = 'https://jsonplaceholder.typicode.com/users'
-
-const maxMileage = 300000
-const maxPrice = 30000
-const itemsCount = 10000
-
-const rnd = n => Math.floor(Math.random() * n)
-let i = 0
-while (i++ < itemsCount) {
-  const id = uuid()
-  const make = makes[rnd(makes.length)]
-  const modelsOfMake = models[make]
-  const model = modelsOfMake[rnd(modelsOfMake.length)]
-  const img = genImg(make, model, rnd(9))
-  const mileage = rnd(maxMileage)
-  const price = rnd(maxPrice) + rnd(maxPrice)
-  data[id] = {
-    id,
-    make,
-    img,
-    model,
-    mileage,
-    price,
-    reserved: false
-  }
-}
 
 const getRandomInt = (min, max) => {
   min = Math.ceil(min)

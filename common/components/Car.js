@@ -1,21 +1,20 @@
 import React, {Component} from 'react'
-import {Card, CardActions, CardHeader, CardMedia, CardTitle, CardText} from 'material-ui/Card'
+import {Card, CardActions, CardHeader, CardText} from 'material-ui/Card'
 import FlatButton from 'material-ui/FlatButton'
-import RaisedButton from 'material-ui/RaisedButton';
-import * as d3 from 'd3'
+import data from './mock'
+import Chart from 'react-google-charts';
 
-export default class Car extends Component {
-  constructor (props) {
-    super(props)
-  }
-  componentDidMount() {
-    this.drawChart()
-  }
-  render() {
+const xMin = 1499040000000;
+const xMax = 1530316800000;
+
+const Car = (props) => {
+    const tmp = [['Date',
+      'rsi post transaction balance']]
+  data.forEach(({tradeDate, rsi_post_transaction_balance}) => tmp.push([new Date(tradeDate), rsi_post_transaction_balance]))
     return (<Card>
       <CardHeader
-        title={this.props.item.name}
-        subtitle={this.props.item.model}
+        title={props.item.name}
+        subtitle={props.item.model}
       />
       <CardText>
         Financial patience score: <b style={{color:'green'}}>2 (HIGH)</b>
@@ -25,19 +24,30 @@ export default class Car extends Component {
         Average monthly spends: 12000 PLN<br/>
         Average days till threshold: 21<br/>
       </CardText>
-      <div id='graph'></div>
+      <Chart
+        width={'100%'}
+        height={'300px'}
+        chartType="LineChart"
+        loader={<div>Loading Chart</div>}
+        data={tmp}
+        options={{
+          chartArea: { height: '90%', width: '80%' }
+        }}
+        chartPackages={['corechart', 'controls']}
+        controls={[
+          {
+            controlType: 'DateRangeFilter',
+            options: {
+              filterColumnLabel: 'tradeDate',
+              ui: { format: { pattern: 'yyyy' } }
+            }
+          }
+        ]}
+      />
       <CardActions>
-        <FlatButton label='Back' onClick={() => this.props.history.goBack()} />
+        <FlatButton label='Back' onClick={() => props.history.goBack()} />
       </CardActions>
     </Card>)
-  }
-  drawChart() {
-    const data = [12, 5, 6, 6, 9, 10]
-    const svg = d3.select('#graph').append('svg').attr('width', 700).attr('height', 300)
-    const g = svg.append('g')
-    var y = d3.scaleLinear().domain([20, 0]).range([300, 0])
-    var x = d3.scaleLinear().domain([0, data.length]).range([0, 700])
-    const a = d3.area().x((d, i) => x(i)).y0(300).y1(d => y(d))
-    g.append('path').attr('d', a(data)).attr('fill', 'cyan')
-  }
 }
+
+export default Car
