@@ -18,13 +18,11 @@ while (i++ < itemsCount) {
   const make = makes[rnd(makes.length)]
   const modelsOfMake = models[make]
   const model = modelsOfMake[rnd(modelsOfMake.length)]
-  const img = genImg(make, model, rnd(9))
   const mileage = rnd(maxMileage)
   const price = rnd(maxPrice) + rnd(maxPrice)
   data[id] = {
     id,
     make,
-    img,
     model,
     mileage,
     price,
