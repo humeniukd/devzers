@@ -94,7 +94,7 @@ export default class Search extends Component {
               <MenuItem value={'2month'} primaryText="2 month" />
             </SelectField>
           </div>
-          <div style={this.styles.row}>
+          {/*<div style={this.styles.row}>
             <Input style={this.styles.input} type="number" hintText="price" name="price"
                    value={this.price} onChange={this.inputHandler}
             />
@@ -103,7 +103,7 @@ export default class Search extends Component {
             <Input style={this.styles.input} type="number" hintText="mileage" name="mileage"
                    value={this.mileage} onChange={this.inputHandler}
             />
-          </div>
+          </div>*/}
         </div>
       </div>
     )
