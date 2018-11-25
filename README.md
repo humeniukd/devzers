@@ -1,10 +1,11 @@
-# Cars App
+#  FinBro
 
-An simple app for car reservation.
+Financial Patience Calculation solution for banks and their clients.
 
 ## Technologies used
 
-* Node 6.x with ES6 (back end).
+* Node 8.x with ES6 (back end) with server side rendering.
+* Google charts library.
 * React/Redux with ES6 + Babel (front end).
 * Webpack (module bundler) + Gulp (task automation).
 * Materials UI Framework.
@@ -22,7 +23,7 @@ Clone the repository and run `npm install`.
 Run `npm start` - production, `npm run serve` - development
 
 * app <http://localhost:8000/>
-* swagger <http://petstore.swagger.io/?url=http://instacar.herokuapp.com/api-docs.json>
+* swagger <http://petstore.swagger.io/?url=http://coins-analysis.appspot.com/api-docs.json>
 
 ## Tasks
 * Unit tests for client: `npm test`
