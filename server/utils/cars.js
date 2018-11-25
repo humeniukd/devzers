@@ -11,8 +11,6 @@ const maxMileage = 300000
 const maxPrice = 30000
 const itemsCount = 10000
 
-const genImg = (make, model, n) => `/img/${make}/${model}/${n}.jpg`
-
 const rnd = n => Math.floor(Math.random() * n)
 let i = 0
 while (i++ < itemsCount) {
