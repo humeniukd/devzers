@@ -17,7 +17,7 @@ const Car = (props) => {
         subtitle={props.item.model}
       />
       <CardText>
-        Financial patience score: <b style={{color:'green'}}>2 (HIGH)</b>
+        Financial patience score: <b style={{color:'green'}}>2 (VERY PATIENT)</b>
         <h2>Summary</h2>
         Average monthly periodic income: 12000 PLN<br/>
         Average monthly surprise income: 2000 PLN<br/>

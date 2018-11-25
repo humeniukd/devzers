@@ -12,9 +12,9 @@ export default class BarChart extends Component {
     return (
       <div style={{fontFamily: 'Roboto'}}>
         <h1>Hi, John Doe</h1>
-        <div>Your financial patience score is: <span style={{color: 'green'}}>2 (VERY GOOD)</span></div>
+        <div>Your financial patience score is: <span style={{color: 'green'}}>2 (VERY PATIENT)</span></div>
         <h2>Summary</h2>
-        <div>Your Financial Patience is keeping at the stable pace with current score as 2 (very good)! Seems that your
+        <div>Your Financial Patience is keeping at the stable pace with current score as 2 (very patient)! Seems that your
           financial
           behaviour tends to save, so we prepared special offers for you, so your money will keep working for you.
         </div>

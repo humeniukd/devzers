@@ -21,13 +21,13 @@ const Cars = ({items, next, prev, onPagination, handleSearch, params, query, sty
   }
 
   const statuses = new Map()
-  statuses.set(-3, 'CRITICAL')
-  statuses.set(-2, 'VERY BAD')
-  statuses.set(-1, 'BAD')
+  statuses.set(-3, 'CRITICALLY IMPATIENT')
+  statuses.set(-2, 'VERY IMPATIENT')
+  statuses.set(-1, 'IMPATIENT')
   statuses.set(0, 'NORMAL')
-  statuses.set(1, 'GOOD')
-  statuses.set(2, 'VERY GOOD')
-  statuses.set(3, 'EXCELLENT')
+  statuses.set(1, 'PATIENT')
+  statuses.set(2, 'VERY PATIENT')
+  statuses.set(3, 'ULTRA PATIENT')
 
   return (
   <div style={styles.wrapper}>
